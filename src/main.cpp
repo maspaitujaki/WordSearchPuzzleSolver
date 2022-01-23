@@ -6,11 +6,16 @@
 using namespace std;
 using namespace std::chrono;
 
+/**
+ * Beberapa data esensial dibuat global
+ * untuk memudahkan penggunaan
+ */
 int row, col = 0;
 vector<vector<char>> board;
 vector<string> words;
 int counter = 0;
 
+/* Deklarasi prosedur pembantu */
 void readFile(string path);
 void displayTest();
 void checkWord(int i, int j, string word, int arah);
@@ -20,21 +25,22 @@ int main(int argc, const char **argv)
 {
     string path;
 
-    /* Penentuan path file konfigurasi */
-    // cout << "Type path to config file: ";
-
-    // getline(cin,path);
-
+    /* pembacaan file konfigurasi */
     readFile(argv[1]);
+    /* menampilkan hasil yang dibaca */
     displayTest();
 
+    /* mulai pencatatan waktu untuk brute force */
     auto start = high_resolution_clock::now();
+    /* traversal matriks */
     for (int i = 0; i < board.size(); i++)
     {
         for (int j = 0; j < board[i].size(); j++)
         {
             for (string word : words)
             {
+                /* pengecekan tiap elemen matriks */
+                /*  untuk tiap kata pada words */
                 checkWord(i, j, word, 1);
                 checkWord(i, j, word, 2);
                 checkWord(i, j, word, 3);

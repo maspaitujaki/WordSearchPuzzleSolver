@@ -7,7 +7,7 @@ main.o: main.cpp
 	$(CC) -c main.cpp
 
 run: main
-	./main s1
+	./main $(path)
 
 clean:
 	rm *.o output
