@@ -10,5 +10,5 @@ run: main
 	./main $(path)
 
 clean:
-	rm *.o output
+	rm ./*.o main
 
